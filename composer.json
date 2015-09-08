@@ -10,7 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-      "magento-hackathon/magento-composer-installer": "3.0.*"
+      "magento-hackathon/magento-composer-installer": "3.0.*",
+        "aydin-hassan/magento-core-composer-installer": "dev-master"
     },
     "extra": {
         "magento-root-dir": "magento/",
