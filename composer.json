@@ -8,11 +8,30 @@
             "email": "amacgregor@allanmacgregor.com"
         }
     ],
+    "config": {
+      "bin-dir": "bin"
+    },
     "minimum-stability": "dev",
     "require": {
       "magento-hackathon/magento-composer-installer": "3.0.*",
         "aydin-hassan/magento-core-composer-installer": "dev-master",
         "magento/core": "1.9.2.1"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.1",
+        "magetest/magento-phpspec-extension": "~2.0",
+        "magetest/magento-behat-extension": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "": [
+                "magento/app",
+                "magento/app/code/core",
+                "magento/app/code/local",
+                "magento/app/code/community",
+                "magento/lib"
+            ]
+        }
     },
     "extra": {
         "magento-root-dir": "magento/",
