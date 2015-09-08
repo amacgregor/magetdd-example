@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4bf76787c8cd68be9836d30bfa7a30d4",
+    "hash": "ca199c19fe57f3f1ae26d7b88bafad92",
     "packages": [
         {
             "name": "aydin-hassan/magento-core-composer-installer",
@@ -462,6 +462,120 @@
                 "issues": "https://github.com/Cotya/magento-composer-installer/issues"
             },
             "time": "2015-08-09 13:46:33"
+        },
+        {
+            "name": "magento/core",
+            "version": "1.9.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bragento/magento-core.git",
+                "reference": "2802bec4c42fb52a12cf328fa243253e9a7ec64d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bragento/magento-core/zipball/2802bec4c42fb52a12cf328fa243253e9a7ec64d",
+                "reference": "2802bec4c42fb52a12cf328fa243253e9a7ec64d",
+                "shasum": ""
+            },
+            "type": "magento-core",
+            "extra": {
+                "map": [
+                    [
+                        "app",
+                        "app"
+                    ],
+                    [
+                        "dev",
+                        "dev"
+                    ],
+                    [
+                        "downloader",
+                        "downloader"
+                    ],
+                    [
+                        "errors",
+                        "errors"
+                    ],
+                    [
+                        "includes",
+                        "includes"
+                    ],
+                    [
+                        "js",
+                        "js"
+                    ],
+                    [
+                        "lib",
+                        "lib"
+                    ],
+                    [
+                        "media",
+                        "media"
+                    ],
+                    [
+                        "shell",
+                        "shell"
+                    ],
+                    [
+                        "skin",
+                        "skin"
+                    ],
+                    [
+                        "var",
+                        "var"
+                    ],
+                    [
+                        ".htaccess",
+                        ".htaccess"
+                    ],
+                    [
+                        "api.php",
+                        "api.php"
+                    ],
+                    [
+                        "cron.php",
+                        "cron.php"
+                    ],
+                    [
+                        "cron.sh",
+                        "cron.sh"
+                    ],
+                    [
+                        "favicon.ico",
+                        "favicon.ico"
+                    ],
+                    [
+                        "get.php",
+                        "get.php"
+                    ],
+                    [
+                        "index.php",
+                        "index.php"
+                    ],
+                    [
+                        "install.php",
+                        "install.php"
+                    ],
+                    [
+                        "mage",
+                        "mage"
+                    ],
+                    [
+                        "LICENSE.html",
+                        "LICENSE.html"
+                    ]
+                ]
+            },
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Magento Core",
+            "homepage": "http://www.magentocommerce.com",
+            "support": {
+                "source": "https://github.com/bragento/magento-core/tree/1.9",
+                "issues": "https://github.com/bragento/magento-core/issues"
+            },
+            "time": "2015-08-06 05:21:06"
         },
         {
             "name": "symfony/console",
