@@ -9,5 +9,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+      "magento-hackathon/magento-composer-installer": "3.0.*"
+    },
+    "extra": {
+        "magento-root-dir": "/magento/"
+    }
 }
