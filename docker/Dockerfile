@@ -1,4 +1,4 @@
-FROM amacgregor/base
+FROM amacgregor/magento-base
 MAINTAINER Allan MacGregor <amacgregor@allanmacgregor.com>
 
 RUN mkdir -p /srv/www/
