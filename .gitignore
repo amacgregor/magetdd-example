@@ -1,1 +1,4 @@
 /vendor/
+magento/media/
+magento/skin/
+magento/app/etc/local.xml
