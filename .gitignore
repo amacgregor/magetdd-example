@@ -124,3 +124,5 @@ skin/frontend/default/modern/
 skin/frontend/enterprise
 skin/install/
 var/
+
+/vendor/

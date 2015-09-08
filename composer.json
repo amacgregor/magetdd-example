@@ -1,0 +1,13 @@
+{
+    "name": "amacgregor/magetdd-example",
+    "description": "Base project for development the Magento Test Driven Extension Development book",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Allan MacGregor",
+            "email": "amacgregor@allanmacgregor.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
