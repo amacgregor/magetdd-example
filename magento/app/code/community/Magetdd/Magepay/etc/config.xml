@@ -9,7 +9,11 @@
         <models>
             <magetdd_magepay>
                 <class>Magetdd_Magepay_Model</class>
+                <resourceModel>magetdd_magepay_resource</resourceModel>
             </magetdd_magepay>
+            <magetdd_magepay_resource>
+                <class>Magetdd_Magepay_Model_Resource</class>
+            </magetdd_magepay_resource>
         </models>
     </global>
 </config>
