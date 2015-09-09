@@ -13,7 +13,19 @@
             </magetdd_magepay>
             <magetdd_magepay_resource>
                 <class>Magetdd_Magepay_Model_Resource</class>
+                <entities>
+                   <transaction>
+                       <table>magetdd_magepay_transaction</table>
+                   </transaction>
+               </entities>
             </magetdd_magepay_resource>
         </models>
+        <resources>
+          <magetdd_magepay_setup>
+              <setup>
+                  <module>Magetdd_Magepay</module>
+              </setup>
+          </magetdd_magepay_setup>
+        </resources>
     </global>
 </config>
