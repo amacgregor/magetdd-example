@@ -12,6 +12,16 @@ class Magetdd_Magepay_Model_TransactionSpec extends ObjectBehavior
         $this->shouldHaveType('Magetdd_Magepay_Model_Transaction');
     }
 
+    function let() {
+      $data = array(
+        'transaction_id' => 99999999999,
+        'order_id'       => 888888888888,
+        'state'          => 'processing',
+        'created_at'     => '2015-09-09',
+      );
+      $this->setData($data);
+    }
+
     function it_should_have_a_transaction_id()
     {
         $this->getTransactionId()->shouldReturn(99999999999);
