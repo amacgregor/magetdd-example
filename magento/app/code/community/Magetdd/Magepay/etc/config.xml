@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Magetdd_Magepay>
+            <version>0.1.0</version>
+        </Magetdd_Magepay>
+    </modules>
+    <global>
+        <models>
+            <magetdd_magepay>
+                <class>Magetdd_Magepay_Model</class>
+            </magetdd_magepay>
+        </models>
+    </global>
+</config>
