@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "21889dc3a6c3ce1719fd9e3c212fd059",
+    "hash": "7f7ad72babb2af84a99280563413acc9",
     "packages": [
         {
             "name": "aydin-hassan/magento-core-composer-installer",
@@ -476,16 +476,16 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "dev-master",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "34ca930d9fbfb439ae8d3b87ca046b914e190295"
+                "reference": "a4bee9f4b344b66e0a0d96c7afae1e92edf385fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/34ca930d9fbfb439ae8d3b87ca046b914e190295",
-                "reference": "34ca930d9fbfb439ae8d3b87ca046b914e190295",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/a4bee9f4b344b66e0a0d96c7afae1e92edf385fe",
+                "reference": "a4bee9f4b344b66e0a0d96c7afae1e92edf385fe",
                 "shasum": ""
             },
             "require": {
@@ -538,7 +538,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2015-07-14 16:34:54"
+            "time": "2015-09-08 22:28:04"
         },
         {
             "name": "magento-hackathon/magento-composer-installer",
@@ -757,12 +757,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "622cdc7c8406faa5adfe6fa45d24434f7bb72fff"
+                "reference": "76dba9c12e9a4f75c362029487ece06f72cd9618"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/622cdc7c8406faa5adfe6fa45d24434f7bb72fff",
-                "reference": "622cdc7c8406faa5adfe6fa45d24434f7bb72fff",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/76dba9c12e9a4f75c362029487ece06f72cd9618",
+                "reference": "76dba9c12e9a4f75c362029487ece06f72cd9618",
                 "shasum": ""
             },
             "require": {
@@ -806,7 +806,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-03 11:42:45"
+            "time": "2015-09-09 18:05:45"
         },
         {
             "name": "symfony/css-selector",
@@ -1317,12 +1317,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "66fd14b4d0b8f2389eaf37c5458608c7cb793a81"
+                "reference": "ef728b658fe6836823aa9e7d673cb08dab216b7d"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ef728b658fe6836823aa9e7d673cb08dab216b7d",
-                "reference": "66fd14b4d0b8f2389eaf37c5458608c7cb793a81",
+                "reference": "ef728b658fe6836823aa9e7d673cb08dab216b7d",
                 "shasum": ""
             },
             "require": {
@@ -1371,7 +1371,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2015-09-08 17:36:26"
+            "time": "2015-09-08 20:05:33"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1565,25 +1565,27 @@
         },
         {
             "name": "magetest/magento-phpspec-extension",
-            "version": "2.1.1",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MageTest/MageSpec.git",
-                "reference": "a82b31c89e51ac391d7589b27f8cc703490e99a5"
+                "reference": "ed77f86770abc2ff4c43039972e15fbc8b7892b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MageTest/MageSpec/zipball/a82b31c89e51ac391d7589b27f8cc703490e99a5",
-                "reference": "a82b31c89e51ac391d7589b27f8cc703490e99a5",
+                "url": "https://api.github.com/repos/MageTest/MageSpec/zipball/ed77f86770abc2ff4c43039972e15fbc8b7892b4",
+                "reference": "ed77f86770abc2ff4c43039972e15fbc8b7892b4",
                 "shasum": ""
             },
             "require": {
-                "phpspec/phpspec": "~2.0",
-                "shanethehat/pretty-xml": "~1.0",
+                "phpspec/phpspec": "~2.1.1",
+                "shanethehat/pretty-xml": "~1.0.1",
                 "symfony/config": "*",
                 "symfony/dependency-injection": "*"
             },
             "require-dev": {
+                "behat/behat": "3.0",
+                "bossa/phpspec2-expect": "*",
                 "magetest/magento": "~1.8.1.0"
             },
             "type": "library",
@@ -1597,7 +1599,8 @@
                         "vendor/magetest/magento/src/app/code/community",
                         "vendor/magetest/magento/src/app/code/core"
                     ],
-                    "Mage": "vendor/magetest/magento/src/app/code/core"
+                    "Mage": "vendor/magetest/magento/src/app/code/core",
+                    "Console": "vendor/phpspec/phpspec/features/bootstrap/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1644,7 +1647,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2014-08-28 16:28:03"
+            "time": "2015-04-03 17:45:57"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1731,30 +1734,33 @@
         },
         {
             "name": "phpspec/phpspec",
-            "version": "2.0.1",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "61712147412cb647b6cb68b19833a60bfda759a1"
+                "reference": "66a1df93099282b1514e9e001fcf6e9393f7783d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/61712147412cb647b6cb68b19833a60bfda759a1",
-                "reference": "61712147412cb647b6cb68b19833a60bfda759a1",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/66a1df93099282b1514e9e001fcf6e9393f7783d",
+                "reference": "66a1df93099282b1514e9e001fcf6e9393f7783d",
                 "shasum": ""
             },
             "require": {
+                "doctrine/instantiator": "~1.0,>=1.0.1",
                 "php": ">=5.3.3",
                 "phpspec/php-diff": "~1.0.0",
                 "phpspec/prophecy": "~1.1",
-                "symfony/console": "~2.1",
+                "sebastian/exporter": "~1.0",
+                "symfony/console": "~2.3",
                 "symfony/event-dispatcher": "~2.1",
                 "symfony/finder": "~2.1",
+                "symfony/process": "~2.1",
                 "symfony/yaml": "~2.1"
             },
             "require-dev": {
-                "behat/behat": "~2.5",
-                "bossa/phpspec2-expect": "dev-master",
+                "behat/behat": "~3.0,>=3.0.11",
+                "bossa/phpspec2-expect": "~1.0",
                 "symfony/filesystem": "~2.1"
             },
             "suggest": {
@@ -1766,7 +1772,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -1800,7 +1806,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2014-07-01 14:09:19"
+            "time": "2015-01-09 13:21:45"
         },
         {
             "name": "phpspec/prophecy",
@@ -2351,12 +2357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DependencyInjection.git",
-                "reference": "ae686a9adbcdd0a5852ee44af1f7c770d3b90f11"
+                "reference": "cb26fac20fae36c145a25a7a3598c31a6faf970b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/ae686a9adbcdd0a5852ee44af1f7c770d3b90f11",
-                "reference": "ae686a9adbcdd0a5852ee44af1f7c770d3b90f11",
+                "url": "https://api.github.com/repos/symfony/DependencyInjection/zipball/cb26fac20fae36c145a25a7a3598c31a6faf970b",
+                "reference": "cb26fac20fae36c145a25a7a3598c31a6faf970b",
                 "shasum": ""
             },
             "require": {
@@ -2403,7 +2409,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-06 08:02:00"
+            "time": "2015-09-09 18:05:45"
         },
         {
             "name": "symfony/dom-crawler",
@@ -2411,12 +2417,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler.git",
-                "reference": "be577b3a5d4a06d8ce03db57222bd06b5a6509de"
+                "reference": "1b459587235fb74b213269ec5ad8ac2f6e22f5f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/be577b3a5d4a06d8ce03db57222bd06b5a6509de",
-                "reference": "be577b3a5d4a06d8ce03db57222bd06b5a6509de",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/1b459587235fb74b213269ec5ad8ac2f6e22f5f4",
+                "reference": "1b459587235fb74b213269ec5ad8ac2f6e22f5f4",
                 "shasum": ""
             },
             "require": {
@@ -2456,7 +2462,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2015-08-27 06:53:13"
+            "time": "2015-09-09 18:05:45"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2464,12 +2470,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "8deea7a9f5560b7e70eab8d72e5e8f2d45564d15"
+                "reference": "69b6037050614d129fee27e17951ec7968f6567e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/8deea7a9f5560b7e70eab8d72e5e8f2d45564d15",
-                "reference": "8deea7a9f5560b7e70eab8d72e5e8f2d45564d15",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/69b6037050614d129fee27e17951ec7968f6567e",
+                "reference": "69b6037050614d129fee27e17951ec7968f6567e",
                 "shasum": ""
             },
             "require": {
@@ -2514,7 +2520,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2015-08-24 07:18:02"
+            "time": "2015-09-09 18:05:45"
         },
         {
             "name": "symfony/filesystem",
@@ -2522,12 +2528,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "00e0462cfe48c7fdd142d0867e827cb0d17e4e23"
+                "reference": "062d0c4b01cfd8ab94957ddf2e9598dcbae2b56a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/00e0462cfe48c7fdd142d0867e827cb0d17e4e23",
-                "reference": "00e0462cfe48c7fdd142d0867e827cb0d17e4e23",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/062d0c4b01cfd8ab94957ddf2e9598dcbae2b56a",
+                "reference": "062d0c4b01cfd8ab94957ddf2e9598dcbae2b56a",
                 "shasum": ""
             },
             "require": {
@@ -2563,7 +2569,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2015-08-27 07:55:57"
+            "time": "2015-09-09 18:22:56"
         },
         {
             "name": "symfony/finder",
@@ -2611,6 +2617,55 @@
                 }
             ],
             "description": "Symfony Finder Component",
+            "homepage": "https://symfony.com",
+            "time": "2015-08-27 06:53:13"
+        },
+        {
+            "name": "symfony/process",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "fc18e378d05c6b81bcac39338bf334e053186efa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/fc18e378d05c6b81bcac39338bf334e053186efa",
+                "reference": "fc18e378d05c6b81bcac39338bf334e053186efa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "~2.7|~3.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
             "time": "2015-08-27 06:53:13"
         },
