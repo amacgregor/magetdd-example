@@ -18,6 +18,7 @@ class Magetdd_Magepay_Model_TransactionSpec extends ObjectBehavior
         'order_id'       => 888888888888,
         'state'          => 'processing',
         'created_at'     => '2015-09-09',
+        'customer_id'    => 1,
       );
       $this->setData($data);
     }
@@ -40,5 +41,10 @@ class Magetdd_Magepay_Model_TransactionSpec extends ObjectBehavior
     function it_should_have_a_created_at_date()
     {
         $this->getCreatedAt()->shouldReturn('2015-09-09');
+    }
+
+    function it_should_have_a_customer_id()
+    {
+       $this->getCustomerId()->shouldReturn(1);
     }
 }

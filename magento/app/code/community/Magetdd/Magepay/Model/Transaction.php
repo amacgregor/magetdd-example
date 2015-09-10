@@ -27,4 +27,9 @@ class Magetdd_Magepay_Model_Transaction extends Mage_Core_Model_Abstract
     {
         return $this->_getData('created_at');
     }
+
+    public function getCustomerId()
+    {
+        return $this->_getData('customer_id');
+    }
 }
