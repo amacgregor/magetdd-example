@@ -1,0 +1,31 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Magepay Transactions') ?></h1>
+</div>
+<?php
+  $transactions = $this->getTransactions(); 
+  if($transactions->getSize()):
+?>
+<table class="data-table transaction-grid" id="my-transactions-table" >
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Transaction #') ?></th>
+            <th><?php echo $this->__('Order #') ?></th>
+            <th><?php echo $this->__('State') ?></th>
+            <th><?php echo $this->__('Created At') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($transactions as $transaction): ?>
+        <tr>
+            <td><?php echo $transaction->getTransactionId() ?>&nbsp;</td>
+            <td><?php echo $transaction->getOrderId() ?>&nbsp;</td>
+            <td><?php echo $transaction->getState() ?>&nbsp;</td>
+            <td><?php echo date("D, j M, Y", strtotime($transaction->getCreatedAt())) ?>&nbsp;</td>
+        </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>
+<script type="text/javascript">decorateTable('my-transaction-table')</script>
+<?php else: ?>
+    <p><?php echo $this->__('There are no transactions under your account yet.') ?></p>
+<?php endif ?>

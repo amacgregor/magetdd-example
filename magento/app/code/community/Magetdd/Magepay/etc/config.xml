@@ -27,6 +27,11 @@
                 </setup>
             </magetdd_magepay_setup>
         </resources>
+        <blocks>
+            <magetdd_magepay>
+                <class>Magetdd_Magepay_Block</class>
+            </magetdd_magepay>
+        </blocks>
     </global>
     <frontend>
         <routers>
@@ -38,5 +43,12 @@
                 </args>
             </magepay>
         </routers>
+        <layout>
+            <updates>
+                <magetdd_magepay module="magetdd_magepay">
+                    <file>magetdd_magepay.xml</file>
+                </magetdd_magepay>
+            </updates>
+        </layout>
     </frontend>
 </config>

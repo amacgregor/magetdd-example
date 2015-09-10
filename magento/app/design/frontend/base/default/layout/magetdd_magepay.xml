@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.0.1">
+  <magepay_index_index>
+    <update handle="customer_account" />
+    <reference name="my.account.wrapper">
+      <block type="magetdd_magepay/transaction_grid" template="magetdd/magepay/customer/transaction/grid.phtml"
+         name="magetdd.magepay.grid" as="magetdd.magepay.grid"></block>
+    </reference>
+  </magepay_index_index>
+</layout>
