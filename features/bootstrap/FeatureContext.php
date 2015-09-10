@@ -64,6 +64,11 @@ use Behat\Gherkin\Node\TableNode;
      */
     public function iShouldSeeTheTransactionGrid()
     {
+        $page = $this->getSession()->getPage();
+        $el   = $page->find('css', 'transaction.grid');
+        if (!$el) {
+            throw new RuntimeException('Grid not found');
+        }
         throw new PendingException();
     }
 
