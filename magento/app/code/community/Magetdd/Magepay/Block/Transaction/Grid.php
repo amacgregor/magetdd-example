@@ -27,4 +27,9 @@ class Magetdd_Magepay_Block_Transaction_Grid extends Mage_Core_Block_Template
   {
     return $this->_databaseAdapter->getCurrentCustomerId();
   }
+
+  public function getViewUrl($transaction)
+  {
+      return $this->getUrl('*/*/view', array('transaction_id' => $transaction->getId()));
+  }
 }

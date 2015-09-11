@@ -1,0 +1,11 @@
+<div class="page-title">
+    <h1><?php echo $this->__('Transaction Details') ?></h1>
+</div>
+<?php $transaction = $this->getTransaction(); ?>
+<?php if(isset($transaction)): ?>
+  <div class="details">
+    <p>Transaction #<?php echo $transaction->getId(); ?> </p>
+  </div>
+<?php else: ?>
+    <p><?php echo $this->__('There was problem retrieving the transaction information.') ?></p>
+<?php endif ?>

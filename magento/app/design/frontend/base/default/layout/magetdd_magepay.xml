@@ -7,4 +7,11 @@
          name="magetdd.magepay.grid" as="magetdd.magepay.grid"></block>
     </reference>
   </magepay_index_index>
+  <magepay_index_view>
+    <update handle="customer_account" />
+    <reference name="my.account.wrapper">
+      <block type="magetdd_magepay/transaction_view" template="magetdd/magepay/customer/transaction/view.phtml"
+         name="magetdd.magepay.view" as="magetdd.magepay.view"></block>
+    </reference>
+  </magepay_index_view>
 </layout>

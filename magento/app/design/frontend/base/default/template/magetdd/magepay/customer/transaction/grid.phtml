@@ -2,16 +2,17 @@
     <h1><?php echo $this->__('Magepay Transactions') ?></h1>
 </div>
 <?php
-  $transactions = $this->getTransactions(); 
+  $transactions = $this->getTransactions();
   if($transactions->getSize()):
 ?>
 <table class="data-table transaction-grid" id="my-transactions-table" >
     <thead>
         <tr>
-            <th><?php echo $this->__('Transaction #') ?></th>
-            <th><?php echo $this->__('Order #') ?></th>
-            <th><?php echo $this->__('State') ?></th>
-            <th><?php echo $this->__('Created At') ?></th>
+            <th class="id"><?php echo $this->__('Transaction #') ?></th>
+            <th class="order-id"><?php echo $this->__('Order #') ?></th>
+            <th class="state"><?php echo $this->__('State') ?></th>
+            <th class="created_at"><?php echo $this->__('Created At') ?></th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,11 @@
             <td><?php echo $transaction->getOrderId() ?>&nbsp;</td>
             <td><?php echo $transaction->getState() ?>&nbsp;</td>
             <td><?php echo date("D, j M, Y", strtotime($transaction->getCreatedAt())) ?>&nbsp;</td>
+            <td>
+              <span class="nobr">
+                <a href="<?php echo $this->getViewUrl($transaction) ?>" class="view-transaction"><?php echo $this->__('View Transaction') ?></a>
+              </span>
+            </td>
         </tr>
     <?php endforeach ?>
     </tbody>

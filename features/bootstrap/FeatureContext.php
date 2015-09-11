@@ -61,11 +61,15 @@ use Behat\Behat\Hook\Scope\AfterStepScope;
     }
 
     /**
-     * @Then the grid shows a transaction :arg1
+     * @Then the grid shows a transaction :column_id
      */
-    public function theGridShowsATransaction($arg1)
+    public function theGridShowsATransaction($column_id)
     {
-        throw new PendingException();
+        $page = $this->getSession()->getPage();
+        $el   = $page->find('css', "th.{$column_id}");
+        if (!$el) {
+            throw new RuntimeException('Column not found');
+        }
     }
 
     /**
@@ -73,7 +77,12 @@ use Behat\Behat\Hook\Scope\AfterStepScope;
      */
     public function clickOnTheViewDetailsButton()
     {
-        throw new PendingException();
+        $page = $this->getSession()->getPage();
+        $el   = $page->find('named', array('link', 'View Transaction'));
+        if (!$el) {
+            throw new RuntimeException('View transaction link not found.');
+        }
+        $el->press();
     }
 
     /**
@@ -81,7 +90,11 @@ use Behat\Behat\Hook\Scope\AfterStepScope;
      */
     public function iShouldSeeTheTransactionDetailsPage()
     {
-        throw new PendingException();
+      $page = $this->getSession()->getPage();
+      $el   = $page->find('css', '.page-title h1');
+      if ($el->getText() != 'TRANSACTION DETAILS') {
+          throw new RuntimeException('The controller action is not secure');
+      }
     }
 
     /**
@@ -95,37 +108,4 @@ use Behat\Behat\Hook\Scope\AfterStepScope;
             throw new RuntimeException('The controller action is not secure');
         }
     }
-
-    /**
-     * Take screen-shot when step fails. Works only with Selenium2Driver.
-     *
-     * @AfterStep
-     * @param AfterStepScope $scope
-     */
-    public function takeScreenshotAfterFailedStep(AfterStepScope $scope)
-    {
-        $screenshotPath = '/Users/amacgregor/screenshots';
-        if (99 === $scope->getTestResult()->getResultCode()) {
-            $driver = $this->getSession()->getDriver();
-
-            if (! $driver instanceof Behat\Mink\Driver\Selenium2Driver) {
-                return;
-            }
-
-            if (! is_dir($screenshotPath)) {
-                mkdir($screenshotPath, 0777, true);
-            }
-
-            $filename = sprintf(
-                '%s_%s_%s.%s',
-                $this->getMinkParameter('browser_name'),
-                date('Ymd') . '-' . date('His'),
-                uniqid('', true),
-                'png'
-            );
-
-            $this->saveScreenshot($filename, $screenshotPath);
-        }
-    }
-
 }
