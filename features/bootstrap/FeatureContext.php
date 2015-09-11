@@ -4,26 +4,15 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
-
+use Behat\Behat\Hook\Scope\AfterStepScope;
 /**
  * Defines application features from the specific context.
  */
  use MageTest\MagentoExtension\Context\MagentoContext;
  use Behat\Behat\Tester\Exception\PendingException;
- use \Mage;
 
  class FeatureContext extends MagentoContext implements Context, SnippetAcceptingContext
  {
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
-    public function __construct()
-    {
-    }
 
     /**
      * @Given I have at least one previous transaction
@@ -69,7 +58,6 @@ use Behat\Gherkin\Node\TableNode;
         if (!$el) {
             throw new RuntimeException('Grid not found');
         }
-        throw new PendingException();
     }
 
     /**
