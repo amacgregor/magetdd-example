@@ -24,3 +24,8 @@ Scenario: View transaction detailed information as a customer
   When I go to "/magepay/"
     And click on the view details button
   Then I should see the transaction details page
+
+Scenario: Guest customer should not be able to see the MagePay Page
+  Given I am on "/cms/index/index"
+  When I go to "/magepay/"
+  Then I should be redirected to the login page

@@ -84,4 +84,48 @@ use Behat\Behat\Hook\Scope\AfterStepScope;
         throw new PendingException();
     }
 
+    /**
+     * @Then I should be redirected to the login page
+     */
+    public function iShouldBeRedirectedToTheLoginPage()
+    {
+        $page = $this->getSession()->getPage();
+        $el   = $page->find('css', '.page-title h1');
+        if ($el->getText() != 'LOGIN OR CREATE AN ACCOUNT') {
+            throw new RuntimeException('The controller action is not secure');
+        }
+    }
+
+    /**
+     * Take screen-shot when step fails. Works only with Selenium2Driver.
+     *
+     * @AfterStep
+     * @param AfterStepScope $scope
+     */
+    public function takeScreenshotAfterFailedStep(AfterStepScope $scope)
+    {
+        $screenshotPath = '/Users/amacgregor/screenshots';
+        if (99 === $scope->getTestResult()->getResultCode()) {
+            $driver = $this->getSession()->getDriver();
+
+            if (! $driver instanceof Behat\Mink\Driver\Selenium2Driver) {
+                return;
+            }
+
+            if (! is_dir($screenshotPath)) {
+                mkdir($screenshotPath, 0777, true);
+            }
+
+            $filename = sprintf(
+                '%s_%s_%s.%s',
+                $this->getMinkParameter('browser_name'),
+                date('Ymd') . '-' . date('His'),
+                uniqid('', true),
+                'png'
+            );
+
+            $this->saveScreenshot($filename, $screenshotPath);
+        }
+    }
+
 }
