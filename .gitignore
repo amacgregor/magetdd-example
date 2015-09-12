@@ -4,4 +4,4 @@ magento/skin/
 magento/var/
 bin/
 magento/app/etc/local.xml
-tags/
+tags
