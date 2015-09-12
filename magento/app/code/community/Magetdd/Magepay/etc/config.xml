@@ -32,6 +32,11 @@
                 <class>Magetdd_Magepay_Block</class>
             </magetdd_magepay>
         </blocks>
+        <helpers>
+            <magetdd_magepay>
+                <class>Magetdd_Magepay_Helper</class>
+            </magetdd_magepay>
+        </helpers>
     </global>
     <frontend>
         <routers>
