@@ -112,4 +112,197 @@ class Magetdd_Magepay_Model_Payment_MethodSpec extends ObjectBehavior
     {
         $this->validateCreditCardNumber('4929876734881603')->shouldReturn(true);
     }
+
+    function it_should_authorize_a_payment($apiAdapter,
+                                           \Mage_Sales_Model_Order_Payment $payment,
+                                           \Mage_Sales_Model_Order $order)
+    {
+    $transData = array(
+        'avsZip'            => 'M5B1M4',
+        'avsAddress1'       => '211 Yonge Street',
+        'avsAddress2'       => '6th Floor',
+        'avsCity'           => 'Toronto',
+        'avsState'          => 'ON',
+        'avsName'           => 'Allan MacGregor',
+        'avsCountryCode'    => 'CA',
+        'orderID'           => '120000011',
+        'amount'            => 50,
+        'taxAmount'         => 12,
+        'cardBrand'         => 'VI',
+        'ccAccountNum'      => 4929529115304709,
+        'ccExp'             => 1608,
+        'ccCardVerifyNum'   => 675,
+    );
+
+    $order->addStatusHistoryComment(Argument::any())->willReturn(true);
+    $payment->getOrder()->willReturn($order);
+    $payment->setLastTransId(Argument::any())->willReturn(true);
+    $payment->setTransactionId(Argument::any())->willReturn(true);
+    $payment->setIsTransactionClosed(false)->willReturn(true);
+    $payment->setTransactionAdditionalInfo(Argument::any(),Argument::type('Array'))->willReturn(true);
+
+    $result = array(
+        'transType'           => 'A',
+        'merchantID'          => '780000213760',
+        'terminalID'          => '001',
+        'cardBrand'           => 'VI',
+        'orderID'             => '0000000120000011',
+        'txRefNum'            => '5418228FA9F356AF503FA6969AED4F85B8885468',
+        'txRefIdx'            => 0,
+        'respDateTime'        => '20140916074415',
+        'procStatus'          => "0",
+        'approvalStatus'      => "1",
+        'respCode'            => '00',
+        'avsRespCode'         => 'Z',
+        'cvvRespCode'         => 'N',
+        'authorizationCode'   => '097049',
+        'procStatusMessage'   => 'Approved',
+        'respCodeMessage'     => '',
+        'hostRespCode'        => '00',
+        'hostAVSRespCode'     => 'Z',
+        'hostCVVRespCode'     => 'N'
+    );
+
+    $apiAdapter->generateAuthorizationData($payment)
+        ->willReturn($transData);
+
+    $apiAdapter->authorize($transData)->willReturn($result);
+
+    $amount = 50; // Authorization amount for the order
+    $this->authorize($payment, $amount)->shouldReturn($this);
+}
+
+function it_should_capture_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+{
+    $transData = array(
+        'amount'            => 50,
+        'taxAmount'         => 12,
+        'orderID'           => '0000000120000011',
+        'bin'               => '000002',
+        'merchantID'        => '780000213760',
+        'terminalID'        => '001'
+    );
+
+    $result = array(
+        'bin'               => '000002',
+        'merchantID'        => '700000203790',
+        'terminalID'        => '001',
+        'orderID'           => '0000000100000012',
+        'txRefNum'          => '5419D82D8C3E0BD7D1F743CA64250C95246954FE',
+        'txRefIdx'          => '2',
+        'splitTxRefIdx'     => '',
+        'amount'            => '5000',
+        'respDateTime'      => '20140918100120',
+        'procStatus'        => '0',
+        'procStatusMessage' => '',
+    );
+
+    $apiAdapter->generateAuthorizationData($payment)
+        ->willReturn($transData);
+
+    $apiAdapter->capture($transData)->willReturn($result);
+    $apiAdapter->isPartialTransaction(Argument::type('array'))->willReturn(false);
+
+    $amount = 50; // Amount to capture
+    $this->capture($payment, $amount)->shouldReturn($this);
+}
+
+function it_should_void_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+{
+    $transData = array(
+        'orderID'           => '0000000100000012',
+        'bin'               => '000002',
+        'merchantID'        => '700000203790',
+        'terminalID'        => '001',
+    );
+
+    $result = array(
+        'bin'               => '000002',
+        'merchantID'        => '700000203790',
+        'terminalID'        => '001',
+        'orderID'           => '0000000100000012',
+        'txRefNum'          => '5421541C35988640372B6978F3268B1354265440',
+        'txRefIdx'          => '2',
+        'splitTxRefIdx'     => '',
+        'respDateTime'      => '20140918100120',
+        'procStatus'        => '0',
+        'approvalStatus'    => '1',
+        'procStatusMessage' => '',
+        'retryTrace'        => '',
+        'retryAttempCount'  => '',
+        'lastRetryDate'     => '',
+    );
+
+    $apiAdapter->generateAuthorizationData($payment)
+        ->willReturn($transData);
+
+    $apiAdapter->void($transData)->willReturn($result);
+
+    $this->void($payment)->shouldReturn($this);
+}
+
+function it_should_refund_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+{
+    $transData = array(
+        'orderID'           => '0000000100000012',
+        'bin'               => '000002',
+        'merchantID'        => '700000203790',
+        'terminalID'        => '001',
+        'txRefNum'          => '5421541C35988640372B6978F3268B1354265440',
+        'amount'            => 20,
+    );
+
+    $result = array(
+        'bin'               => '000002',
+        'merchantID'        => '700000203790',
+        'terminalID'        => '001',
+        'orderID'           => '0000000100000012',
+        'txRefNum'          => '5421541C35988640372B6978F3268B1354265440',
+        'txRefIdx'          => '2',
+        'splitTxRefIdx'     => '',
+        'respDateTime'      => '20140918100120',
+        'procStatus'        => '0',
+        'approvalStatus'    => '1',
+        'procStatusMessage' => '',
+    );
+
+    $apiAdapter->generateAuthorizationData($payment)
+        ->willReturn($transData);
+
+    $amount = 20;
+    $apiAdapter->refund($transData)->willReturn($result,$amount);
+
+    $this->refund($payment, $amount)->shouldReturn($this);
+  }
+
+  function it_should_cancel_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+  {
+      $transData = array(
+          'orderID'           => '0000000100000012',
+          'bin'               => '000002',
+          'merchantID'        => '700000203790',
+          'terminalID'        => '001',
+      );
+
+      $result = array(
+          'bin'               => '000002',
+          'merchantID'        => '700000203790',
+          'terminalID'        => '001',
+          'orderID'           => '0000000100000012',
+          'txRefNum'          => '5421541C35988640372B6978F3268B1354265440',
+          'txRefIdx'          => '2',
+          'splitTxRefIdx'     => '',
+          'amount'            => '6200',
+          'respDateTime'      => '20140918100120',
+          'procStatus'        => '0',
+          'procStatusMessage' => '',
+      );
+
+      $apiAdapter->generateAuthorizationData($payment)
+          ->willReturn($transData);
+
+      $apiAdapter->void($transData)->willReturn($result);
+
+      $this->cancel($payment)->shouldReturn($this);
+  }
 }
