@@ -165,7 +165,7 @@ class Magetdd_Magepay_Model_Payment_MethodSpec extends ObjectBehavior
     $apiAdapter->generateTransactionData($payment)
         ->willReturn($transData)->shouldBeCalled();
 
-    $apiAdapter->authorize($transData)->willReturn($result);
+    $apiAdapter->authorize($transData)->willReturn($result)->shouldBeCalled();
 
     $amount = 50; // Authorization amount for the order
     $this->authorize($payment, $amount)->shouldReturn($this);
@@ -197,9 +197,9 @@ function it_should_capture_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment
     );
 
     $apiAdapter->generateTransactionData($payment)
-        ->willReturn($transData);
+        ->willReturn($transData)->shouldBeCalled();
 
-    $apiAdapter->capture($transData)->willReturn($result);
+    $apiAdapter->capture($transData)->willReturn($result)->shouldBeCalled();
     $apiAdapter->isPartialTransaction(Argument::type('array'))->willReturn(false);
 
     $amount = 50; // Amount to capture
@@ -233,9 +233,9 @@ function it_should_void_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment $p
     );
 
     $apiAdapter->generateTransactionData($payment)
-        ->willReturn($transData);
+        ->willReturn($transData)->shouldBeCalled();
 
-    $apiAdapter->void($transData)->willReturn($result);
+    $apiAdapter->void($transData)->willReturn($result)->shouldBeCalled();
 
     $this->void($payment)->shouldReturn($this);
 }
@@ -266,10 +266,10 @@ function it_should_refund_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment 
     );
 
     $apiAdapter->generateTransactionData($payment)
-        ->willReturn($transData);
+        ->willReturn($transData)->shouldBeCalled();
 
     $amount = 20;
-    $apiAdapter->refund($transData)->willReturn($result,$amount);
+    $apiAdapter->refund($transData)->willReturn($result,$amount)->shouldBeCalled();
 
     $this->refund($payment, $amount)->shouldReturn($this);
   }
@@ -298,9 +298,9 @@ function it_should_refund_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment 
       );
 
       $apiAdapter->generateTransactionData($payment)
-          ->willReturn($transData);
+          ->willReturn($transData)->shouldBeCalled();
 
-      $apiAdapter->void($transData)->willReturn($result);
+      $apiAdapter->void($transData)->willReturn($result)->shouldBeCalled();
 
       $this->cancel($payment)->shouldReturn($this);
   }
