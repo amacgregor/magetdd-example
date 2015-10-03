@@ -12,6 +12,15 @@ class Magetdd_Magepay_Model_Payment_Method extends Mage_Payment_Model_Method_Cc
   protected $_canSaveCc     = false;
 
 
+  public function __construct(array $services = array())
+  {
+      if (isset($services['api_adapter'])) {
+          $this->_apiAdapter = $services['api_adapter'];
+      } else {
+          $this->_apiAdapter = new Magetdd_Magepay_Model_Payment_Adapter();
+      }
+  }
+
   public function canSaveCc()
   {
     return $this->_canSaveCc;
@@ -36,5 +45,28 @@ class Magetdd_Magepay_Model_Payment_Method extends Mage_Payment_Model_Method_Cc
        $total += $digit;
     }
     return ($total % 10 == 0) ? true : false;
+  }
+
+  /**
+  * Authorize a Payment against the gateway
+  *
+  * @param Varien_Object $payment
+  * @param float $amount
+  * @return bool|Mage_Payment_Model_Abstract
+  */
+  public function authorize(Varien_Object $payment, $amount)
+  {
+    parent::authorize($payment, $amount);
+
+    // Prepare the request data
+    $transactionData = $this->_apiAdapter->generateTransactionData($payment);
+
+    // Do request to the api matching method
+    $result = $this->_apiAdapter->authorize($transactionData);
+
+    $payment->setTransactionId($result['txRefNum']);
+    $payment->setIsTransactionClosed(false);
+
+    return $this;
   }
 }

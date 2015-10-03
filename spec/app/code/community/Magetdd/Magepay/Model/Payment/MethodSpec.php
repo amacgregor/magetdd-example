@@ -17,11 +17,10 @@ class Magetdd_Magepay_Model_Payment_MethodSpec extends ObjectBehavior
         $this->shouldHaveType('Mage_Payment_Model_Method_Cc');
     }
 
-    // function let(\Demac_Chase_Model_Paymentech_Api_Adapter $apiAdapter,
-    //              \Demac_Chase_Model_Adapter_DatabaseAdapter $databaseAdapter)
-    // {
-    //     $this->beConstructedWith(array('api_adapter' => $apiAdapter, 'database_adapter' => $databaseAdapter));
-    // }
+    function let(\Magetdd_Magepay_Model_Payment_Adapter $apiAdapter)
+    {
+        $this->beConstructedWith(array('api_adapter' => $apiAdapter));
+    }
 
     function it_should_have_a_payment_code()
     {
@@ -114,7 +113,7 @@ class Magetdd_Magepay_Model_Payment_MethodSpec extends ObjectBehavior
     }
 
     function it_should_authorize_a_payment($apiAdapter,
-                                           \Mage_Sales_Model_Order_Payment $payment,
+                                           Mage_Sales_Model_Order_Payment $payment,
                                            \Mage_Sales_Model_Order $order)
     {
     $transData = array(
@@ -163,8 +162,8 @@ class Magetdd_Magepay_Model_Payment_MethodSpec extends ObjectBehavior
         'hostCVVRespCode'     => 'N'
     );
 
-    $apiAdapter->generateAuthorizationData($payment)
-        ->willReturn($transData);
+    $apiAdapter->generateTransactionData($payment)
+        ->willReturn($transData)->shouldBeCalled();
 
     $apiAdapter->authorize($transData)->willReturn($result);
 
@@ -172,7 +171,7 @@ class Magetdd_Magepay_Model_Payment_MethodSpec extends ObjectBehavior
     $this->authorize($payment, $amount)->shouldReturn($this);
 }
 
-function it_should_capture_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+function it_should_capture_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment $payment)
 {
     $transData = array(
         'amount'            => 50,
@@ -197,7 +196,7 @@ function it_should_capture_a_payment($apiAdapter, \Mage_Sales_Model_Order_Paymen
         'procStatusMessage' => '',
     );
 
-    $apiAdapter->generateAuthorizationData($payment)
+    $apiAdapter->generateTransactionData($payment)
         ->willReturn($transData);
 
     $apiAdapter->capture($transData)->willReturn($result);
@@ -207,7 +206,7 @@ function it_should_capture_a_payment($apiAdapter, \Mage_Sales_Model_Order_Paymen
     $this->capture($payment, $amount)->shouldReturn($this);
 }
 
-function it_should_void_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+function it_should_void_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment $payment)
 {
     $transData = array(
         'orderID'           => '0000000100000012',
@@ -233,7 +232,7 @@ function it_should_void_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $
         'lastRetryDate'     => '',
     );
 
-    $apiAdapter->generateAuthorizationData($payment)
+    $apiAdapter->generateTransactionData($payment)
         ->willReturn($transData);
 
     $apiAdapter->void($transData)->willReturn($result);
@@ -241,7 +240,7 @@ function it_should_void_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $
     $this->void($payment)->shouldReturn($this);
 }
 
-function it_should_refund_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+function it_should_refund_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment $payment)
 {
     $transData = array(
         'orderID'           => '0000000100000012',
@@ -266,7 +265,7 @@ function it_should_refund_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment
         'procStatusMessage' => '',
     );
 
-    $apiAdapter->generateAuthorizationData($payment)
+    $apiAdapter->generateTransactionData($payment)
         ->willReturn($transData);
 
     $amount = 20;
@@ -275,7 +274,7 @@ function it_should_refund_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment
     $this->refund($payment, $amount)->shouldReturn($this);
   }
 
-  function it_should_cancel_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment $payment)
+  function it_should_cancel_a_payment($apiAdapter, Mage_Sales_Model_Order_Payment $payment)
   {
       $transData = array(
           'orderID'           => '0000000100000012',
@@ -298,7 +297,7 @@ function it_should_refund_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment
           'procStatusMessage' => '',
       );
 
-      $apiAdapter->generateAuthorizationData($payment)
+      $apiAdapter->generateTransactionData($payment)
           ->willReturn($transData);
 
       $apiAdapter->void($transData)->willReturn($result);
@@ -306,3 +305,23 @@ function it_should_refund_a_payment($apiAdapter, \Mage_Sales_Model_Order_Payment
       $this->cancel($payment)->shouldReturn($this);
   }
 }
+
+/**
+ * Class Mage_Sales_Model_Order_Payment
+ * @package spec
+ *
+ * @method Mage_Sales_Model_Order_Payment getCcNumber()
+ * @method Mage_Sales_Model_Order_Payment getCcCid()
+ * @method string getCcType()
+ * @method string getCcOwner()
+ * @method string getCcExpYear()
+ * @method string hasLastTransId()
+ * @method string hasParentTransactionId()
+ * @method string getParentTransactionId()
+ * @method string getCcExpMonth()
+ * @method Mage_Sales_Model_Order_Payment setTransactionId()
+ * @method Mage_Sales_Model_Order_Payment setLastTransId()
+ * @method Mage_Sales_Model_Order_Payment setTransactionAdditionalInfo()
+ * @method Mage_Sales_Model_Order_Payment setIsTransactionClosed()
+ */
+class Mage_Sales_Model_Order_Payment extends \Mage_Sales_Model_Order_Payment {}
