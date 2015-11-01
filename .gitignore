@@ -5,3 +5,4 @@ magento/var/
 bin/
 magento/app/etc/local.xml
 tags
+.idea/
